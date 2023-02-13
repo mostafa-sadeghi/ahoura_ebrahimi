@@ -1,21 +1,21 @@
 
-# primitive dat types in python:
+# primitive data types in python:
 # number data type
 
-# x = 1
+x = 1
 
 # print(type(x))
 
-# y = 1.5
+y = 1.5
 # print(type(y))
 
-# output = x + y
-# print("x + y =", output)
-# output = x - y
+output = x + y
+# print("sum of two numbers is:", output)
+output = x - y
 # print("x - y =", output)
-# output = x * y
+output = x * y
 # print("x * y =", output)
-# output = x / y
+output = x / y
 # print("x / y =", output)
 
 # #   bool data type
@@ -29,8 +29,8 @@
 
 # name = 'martin'
 # print(type(name))
-# name = "martin"
-# print(type(name))
+name = "martin"
+print(type(name))
 
 # how to naming variables in python
 
