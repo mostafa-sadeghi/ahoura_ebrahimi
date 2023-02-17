@@ -46,8 +46,8 @@ _number = 4
 # number one = 5  # syntax error
 
 # snake case:
-number_one = 10
+# number_one = 10
 # camel case:
-numberOne = 10
+# numberOne = 10
 # big camel case
-NumberOne = 10
+# NumberOne = 10
