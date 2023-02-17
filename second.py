@@ -44,3 +44,10 @@ _number = 4
 # 4number = 5  # syntax error
 
 # number one = 5  # syntax error
+
+# snake case:
+number_one = 10
+# camel case:
+numberOne = 10
+# big camel case
+NumberOne = 10
