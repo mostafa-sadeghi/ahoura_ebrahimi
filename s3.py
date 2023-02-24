@@ -16,27 +16,35 @@
 # x = False
 # print(type(x))
 
-name = ''
-print(type(name))
-print(len(name))
-name = ""
-print(type(name))
+# name = ''
+# print(type(name))
+# print(len(name))
+# name = ""
+# print(type(name))
 
 
-name = "nikan"
+# name = "nikan"
 
 # print("name's length is:", len(name))
 
-print(name[0])
-print(name[1])
-print(name[2])
-print(name[3])
-print(name[4])
+# print(name[0])
+# print(name[1])
+# print(name[2])
+# print(name[3])
+# print(name[4])
 # print(name[5])  # error
-print(name[0], name[1], name[2], name[3], name[4])
+# print(name[0], name[1], name[2], name[3], name[4])
 
 # Exercise 1 : یک متغیر تعریف کنید که شامل کاراکترهای زیر باشد
 # string = 'abcdefghij'
 # از رشته بالا سومین کاراکتر و ششمین کاراکتر و آخرین کاراکتر را پرینت نمائید - هر کاراکتر در یک خط جدا
 # از رشته بالا سومین کاراکتر و ششمین کاراکتر و آخرین کاراکتر را پرینت نمائید - همه در یک خط
 # طول رشته را پرینت نمائید
+string = 'abcdefghij'
+print(string[2])
+print(string[5])
+print(string[-1])
+print()
+print(string[2], string[5], string[-1])
+print()
+print("len of string is:", len(string))
