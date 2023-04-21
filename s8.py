@@ -80,26 +80,37 @@ favorite_sports = {}
 
 
 import turtle
-
 s = turtle.Screen()
 s.bgcolor('orange')
-s.bgpic('mario.png')
+# s.register_shape("triangle1", ((0,0), (10,10), (-10,10)))
+s.register_shape('strawberry.gif')
+# s.bgpic('mario.png')
 p = turtle.Pen()
-p.shape('turtle')
+p.shape('strawberry.gif') # 'arrow', 'turtle', 'circle', 'square', 'triangle', 'classic'
 p.shapesize(2)
 p.pensize(5)
 p.color('red','green')
-
+p.speed('fast') # fastest  fast  normal slow  slowest
+p.penup()
+p.goto(200,200)
+p.pendown()
 # draw a triangle
+p.begin_fill()
 p.forward(100)
 p.left(120)
-
+p.stamp()
 p.forward(100)
 p.left(120)
-
+p.stamp()
 p.forward(100)
 p.left(120)
+p.stamp()
+p.end_fill()
+p.hideturtle()
+p.setheading(30)
+p.fd(83)
 
+s.exitonclick()
 # exercise 2 : کشیدن مربع
 # کشیدن پنجضلعی
 # کشیدن شش ضلعی
@@ -108,4 +119,3 @@ p.left(120)
 # کشیدن نه ضلعی
 
 
-s.exitonclick()
