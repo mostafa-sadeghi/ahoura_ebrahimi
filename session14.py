@@ -38,15 +38,27 @@ screen.title("my app")
 pen = turtle.Pen()
 pen.fillcolor("red")
 
-def draw_shape(sides):
-    pen.begin_fill()
+def draw_shape(sides, length, fill, fill_color):
+    if fill == True:
+        pen.fillcolor(fill_color)
+        pen.begin_fill()
     for num in range(sides):
         
-        pen.forward(100)
+        pen.forward(length)
         pen.left(360/sides)
-    pen.end_fill()
+    if fill == True:
+        pen.end_fill()
 
-draw_shape(5)
+shape_number_of_sides = int(turtle.textinput("iput side number","How many sides?"))
+length_of_side = int(turtle.textinput('input length',"enter side length"))
+fill_or_not = turtle.textinput('input fill or no', 'Fill or Not?(f or n)')
+fill_color = ''
+if fill_or_not == 'f':
+    fill_color = turtle.textinput('input color','which color?')
+    fill = True
+else:
+    fill = False
+draw_shape(shape_number_of_sides, length_of_side, fill, fill_color)
 
 # exercise 2: علاوه بر تعداد اضلاع، اندازه(طول) ضلع نیز از ورودی گرفته شود
 # exercise 3: امکان اینکه شکل توپر و یا توخالی باشد نیز وجود داشته باشد
