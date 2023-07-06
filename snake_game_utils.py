@@ -18,6 +18,7 @@ def make_screen():
     display_surface.tracer(0)
     return display_surface
 
+
 def move_snake(snake_head):
     if snake_head.direction == "up":
         snake_head_y_position = snake_head.ycor()
@@ -31,3 +32,12 @@ def move_snake(snake_head):
     if snake_head.direction == "left":
         snake_head_x_position = snake_head.xcor()
         snake_head.setx(snake_head_x_position - 20)
+
+
+def reset(head, bodies):
+    head.goto(0, 0)
+    head.direction = ""
+    for body in bodies:
+        body.ht()
+
+    bodies.clear()

@@ -3,7 +3,8 @@ from time import sleep
 from random import randint
 from snake_game_utils import *
 
-
+score = 0
+high_score = 0
 display_surface = make_screen()
 
 
@@ -39,6 +40,11 @@ snake_head.direction = ""
 food = generate_turtle_object("circle", "red")
 change_food_position()
 
+score_board = generate_turtle_object("square", "white")
+score_board.hideturtle()
+score_board.goto(0, 260)
+
+
 display_surface.listen()
 display_surface.onkeypress(change_direction_to_up, "Up")
 display_surface.onkeypress(change_direction_to_left, "Left")
@@ -59,9 +65,18 @@ snake_head.ondrag(my_func)
 snake_bodies = []
 running = True
 while running:
+
+    score_board.clear()
+    score_board.write(
+        f"Score: {score}, HighScore: {high_score}", align="center", font=("terminal", 22))
+    
+    
     display_surface.update()
 
     if snake_head.distance(food) < 20:
+        score += 1
+        if score > high_score:
+            high_score = score
         change_food_position()
         new_tail = generate_turtle_object("square", "grey")
         snake_bodies.append(new_tail)
@@ -74,6 +89,13 @@ while running:
         headx = snake_head.xcor()
         heady = snake_head.ycor()
         snake_bodies[0].goto(headx, heady)
+
+    if snake_head.xcor()>290 or\
+          snake_head.xcor()<-290 or snake_head.ycor()>290 \
+            or snake_head.ycor() <-290:
+        reset(snake_head, snake_bodies)
+        score = 0
+
 
     move_snake(snake_head)
     sleep(0.2)
