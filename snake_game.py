@@ -8,6 +8,15 @@ high_score = 0
 display_surface = make_screen()
 
 
+def onclose():
+    global running
+    running = False
+
+
+root = display_surface._root
+root.protocol("WM_DELETE_WINDOW", onclose)
+
+
 def change_direction_to_up():
     if snake_head.direction != "down":
         snake_head.direction = "up"
@@ -30,7 +39,7 @@ def change_direction_to_left():
 
 def change_food_position():
     random_x_position = randint(-270, 270)
-    random_y_position = randint(-270, 270)
+    random_y_position = randint(-270, 230)
     food.goto(random_x_position, random_y_position)
 
 
@@ -68,9 +77,8 @@ while running:
 
     score_board.clear()
     score_board.write(
-        f"Score: {score}, HighScore: {high_score}", align="center", font=("terminal", 22))
-    
-    
+        f"Score: {score} HighScore: {high_score}", align="center", font=("arial", 22))
+
     display_surface.update()
 
     if snake_head.distance(food) < 20:
@@ -90,12 +98,16 @@ while running:
         heady = snake_head.ycor()
         snake_bodies[0].goto(headx, heady)
 
-    if snake_head.xcor()>290 or\
-          snake_head.xcor()<-290 or snake_head.ycor()>290 \
-            or snake_head.ycor() <-290:
+    if snake_head.xcor() > 290 or\
+        snake_head.xcor() < -290 or snake_head.ycor() > 290 \
+            or snake_head.ycor() < -290:
         reset(snake_head, snake_bodies)
         score = 0
 
-
     move_snake(snake_head)
-    sleep(0.2)
+
+    for body in snake_bodies:
+        if body.distance(snake_head) < 20:
+            reset(snake_head, snake_bodies)
+            score = 0
+    sleep(0.08)

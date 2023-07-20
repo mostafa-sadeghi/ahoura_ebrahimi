@@ -1,0 +1,6 @@
+*.exe
+*.spec
+.idea
+.vscode
+build
+dist

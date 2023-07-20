@@ -6,7 +6,7 @@ def generate_turtle_object(shape, color):
     turtle_object.shape(shape)
     turtle_object.color(color)
     turtle_object.penup()
-    turtle_object.speed('fastest')
+    turtle_object.speed('normal')
     return turtle_object
 
 
