@@ -13,17 +13,18 @@ def create_secret_number(num_of_digits):
 
 
 def get_help(user_guess, secret_number):
-    pass
-"""
-اگر کاربر درست حدس زده باشد
-پیغام برنده را نمایش دهد
-اگر سه رقم غلط باشد
-bagel
+    if user_guess == secret_number:
+        return "You got it"
 
-اگر رقم درست باشد ولی سرجایش نباشد
-pico
+    string = ""
+    for i in range(len(user_guess)):
+        if user_guess[i] == secret_number[i]:
+            string += "Fermi, "
 
-اگر رقم درست باشد و سرجایش باشد
-fermi
-را نمایش دهد
-"""
+        elif user_guess[i] in secret_number:
+            string += "Pico, "
+
+    if not len(string):
+        return "Bagels"
+    else:
+        return string

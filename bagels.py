@@ -1,5 +1,5 @@
 from bagels_config import message, NUM_DIGITS, MAX_GUESSES
-from bagels_utils import create_secret_number
+from bagels_utils import create_secret_number, get_help
 
 number_of_user_guesses = 1
 print(message)
@@ -11,6 +11,6 @@ while number_of_user_guesses < MAX_GUESSES:
     user_guess = input(f"enter a {NUM_DIGITS}digits number: ")
     help = get_help(user_guess, secret_number)
     number_of_user_guesses += 1
-
-
-
+    print(help)
+    if user_guess == secret_number:
+        break
