@@ -10,7 +10,7 @@ class Dog:
         else:
             print(f"{self.name}, Good Girl, eatUp")
 
-    def burk(self, loud):
+    def bark(self, loud):
         if loud == True:
             print("WOOF WOOF WOOF WOOF")
         else:
@@ -26,7 +26,7 @@ class Beagle(Dog):
 
 
 beagle_1 = Beagle("beagle_1", 11, "boy")
-beagle_1.burk(True)
+beagle_1.bark(True)
 beagle_1.hunt()
 
 
@@ -34,5 +34,5 @@ beagle_1.hunt()
 # dog_2 = Dog("peter", 3, "boy" )
 # dog_1.eat()
 # dog_2.eat()
-# dog_1.burk(True)
-# dog_2.burk(False)
+# dog_1.bark(True)
+# dog_2.bark(False)

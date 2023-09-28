@@ -15,7 +15,7 @@ def make_screen():
     display_surface.bgcolor('blue')
     display_surface.title('Snake Game')
     display_surface.setup(width=600, height=600)
-    display_surface.tracer(0)
+    display_surface.tracer(4)
     return display_surface
 
 
