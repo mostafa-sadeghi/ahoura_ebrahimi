@@ -18,4 +18,5 @@ class Monster(Sprite):
 
         self.velocity = randint(1, 5)
 
-    
+    def update(self):
+        pass
