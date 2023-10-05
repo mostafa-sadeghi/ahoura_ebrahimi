@@ -12,6 +12,7 @@ class Player(Sprite):
         self.rect.centerx = WINDOW_WIDTH/2
         self.velocity = 5
         self.lives = 3
+        self.warps = 2
 
     def move(self):
         keys = pygame.key.get_pressed()
@@ -23,8 +24,3 @@ class Player(Sprite):
             self.rect.x -= self.velocity
         if keys[pygame.K_RIGHT]:
             self.rect.x += self.velocity
-
-    
-
-
-

@@ -24,7 +24,24 @@ class Game:
         self.monsters_images = [blue_monster,
                                 green_monster, purple_monster, yellow_monster]
 
+        self.target_monster_type = randint(0, 3)
+        self.target_monster_image = self.monsters_images[self.target_monster_type]
+        self.target_monster_image_rect = self.target_monster_image.get_rect()
+        self.target_monster_image_rect.centerx = WINDOW_WIDTH/2
+        self.target_monster_image_rect.bottom = 100
+
+    def draw(self, screen):
+        """
+        draw the game states and the target monster
+        : screen
+        """
+        # display score and player lives and round number and player warps number
+        screen.blit(self.target_monster_image, self.target_monster_image_rect)
+
     def start_new_round(self):
+        """
+        starts new round and spawn or create 
+        """
         self.round_number += 1
         for i in range(self.round_number):
             self.monster_group.add(Monster(randint(
