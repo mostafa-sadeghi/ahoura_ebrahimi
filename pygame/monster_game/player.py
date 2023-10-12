@@ -12,9 +12,17 @@ class Player(Sprite):
         self.rect.centerx = WINDOW_WIDTH/2
         self.velocity = 5
         self.lives = 3
+        # تعداد دفعات فرارکردن بازیکن
         self.warps = 2
 
     def move(self):
+        # TODO
+        """
+        در صورت وارد شدن شوالیه به داخل زمین بازی
+        نتواند از ان خارج شود
+        مگر با فشردن دکمه فاصله
+
+        """
         keys = pygame.key.get_pressed()
         if keys[pygame.K_UP]:
             self.rect.y -= self.velocity
@@ -24,3 +32,9 @@ class Player(Sprite):
             self.rect.x -= self.velocity
         if keys[pygame.K_RIGHT]:
             self.rect.x += self.velocity
+
+    def escape(self):
+        # TODO
+        "بازیکن باید با فشردن دکمه فاصله بتواند به محل امن خود فرار کند"
+        "محل امن بازیکن در پایین صفحه و در وسط قرار دارد"
+        "نکته تعداد دفعاتی که بازیکن می تواند فرار کند دومرتبه است"

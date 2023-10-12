@@ -35,8 +35,17 @@ class Game:
         draw the game states and the target monster
         : screen
         """
+        COLORS = (
+            (14, 171, 231),
+            (95, 213, 50),
+            (238, 86, 252),
+            (245, 177, 18)
+        )
+        # TODO
         # display score and player lives and round number and player warps number
         screen.blit(self.target_monster_image, self.target_monster_image_rect)
+        pygame.draw.rect(screen, COLORS[self.target_monster_type],
+                         (0, 100, WINDOW_WIDTH, WINDOW_HEIGHT-200), 4)
 
     def start_new_round(self):
         """
@@ -52,3 +61,11 @@ class Game:
                 0, WINDOW_WIDTH - 64), randint(100, WINDOW_HEIGHT-164), self.monsters_images[2], 2))
             self.monster_group.add(Monster(randint(
                 0, WINDOW_WIDTH - 64), randint(100, WINDOW_HEIGHT-164), self.monsters_images[3], 3))
+
+    def update(self):
+        collided_monster = pygame.sprite.spritecollideany(
+            self.player, self.monster_group)
+        if collided_monster:
+            if collided_monster.type == self.target_monster_type:
+                self.score += 1
+                collided_monster.remove(self.monster_group)
