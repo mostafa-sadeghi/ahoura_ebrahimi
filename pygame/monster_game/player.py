@@ -14,6 +14,9 @@ class Player(Sprite):
         self.lives = 3
         # تعداد دفعات فرارکردن بازیکن
         self.warps = 2
+        self.catch_sound = pygame.mixer.Sound("monster_game/assets/catch.wav")
+        self.die_sound = pygame.mixer.Sound("monster_game/assets/die.wav")
+        self.warp_sound = pygame.mixer.Sound("monster_game/assets/warp.wav")
 
     def move(self):
         # TODO
@@ -34,7 +37,5 @@ class Player(Sprite):
             self.rect.x += self.velocity
 
     def escape(self):
-        # TODO
-        "بازیکن باید با فشردن دکمه فاصله بتواند به محل امن خود فرار کند"
-        "محل امن بازیکن در پایین صفحه و در وسط قرار دارد"
-        "نکته تعداد دفعاتی که بازیکن می تواند فرار کند دومرتبه است"
+        self.rect.bottom = WINDOW_HEIGHT
+        self.rect.centerx = WINDOW_WIDTH/2
