@@ -19,23 +19,17 @@ class Player(Sprite):
         self.warp_sound = pygame.mixer.Sound("monster_game/assets/warp.wav")
 
     def move(self):
-        # TODO
-        """
-        در صورت وارد شدن شوالیه به داخل زمین بازی
-        نتواند از ان خارج شود
-        مگر با فشردن دکمه فاصله
 
-        """
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_UP]:
+        if keys[pygame.K_UP] and self.rect.top > 100:
             self.rect.y -= self.velocity
-        if keys[pygame.K_DOWN]:
+        if keys[pygame.K_DOWN] and self.rect.bottom < WINDOW_HEIGHT - 100:
             self.rect.y += self.velocity
-        if keys[pygame.K_LEFT]:
+        if keys[pygame.K_LEFT] and self.rect.left > 0:
             self.rect.x -= self.velocity
-        if keys[pygame.K_RIGHT]:
+        if keys[pygame.K_RIGHT] and self.rect.right < WINDOW_WIDTH:
             self.rect.x += self.velocity
 
-    def escape(self):
+    def reset(self):
         self.rect.bottom = WINDOW_HEIGHT
         self.rect.centerx = WINDOW_WIDTH/2

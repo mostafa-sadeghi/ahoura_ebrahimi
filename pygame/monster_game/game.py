@@ -11,7 +11,7 @@ class Game:
         self.score = 0
         self.round_number = 0
 
-        self.font = pygame.font.Font("monster_game/assets/Abrushow.ttf")
+        self.font = pygame.font.Font("monster_game/assets/Abrushow.ttf", 32)
 
         blue_monster = pygame.image.load(
             "monster_game/assets/blue_monster.png")
@@ -41,8 +41,14 @@ class Game:
             (238, 86, 252),
             (245, 177, 18)
         )
+        score_text = self.font.render(f'Score:{self.score}', True, (255, 0, 0))
+        score_rect = score_text.get_rect()
+        score_rect.topleft = (0, 0)
+
+        screen.blit(score_text, score_rect)
+
         # TODO
-        # display score and player lives and round number and player warps number
+        # display  player lives and round number and player warps number
         screen.blit(self.target_monster_image, self.target_monster_image_rect)
         pygame.draw.rect(screen, COLORS[self.target_monster_type],
                          (0, 100, WINDOW_WIDTH, WINDOW_HEIGHT-200), 4)
@@ -69,3 +75,14 @@ class Game:
             if collided_monster.type == self.target_monster_type:
                 self.score += 1
                 collided_monster.remove(self.monster_group)
+                self.player.catch_sound.play()
+
+            else:
+                self.player.lives -= 1
+                self.player.die_sound.play()
+                self.player.reset()
+
+    def change_target(self):
+        # خط زیر لیستی از اسپرایت های باقی مانده را می دهد
+        remained_sprites = self.monster_group.sprites()
+        # TODO یک اسپرایت از میان اسپرایت های باقیمانده به عنوان تارگت جدید انتخاب کنید به صورت تصادفی
