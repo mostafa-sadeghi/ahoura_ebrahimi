@@ -1,5 +1,5 @@
 import pygame
-from random import randint
+from random import randint, choice
 from monster import Monster
 from config import *
 
@@ -48,7 +48,7 @@ class Game:
         screen.blit(score_text, score_rect)
 
         # TODO
-        # display  player lives and round number and player warps number
+        # display player lives and round number and player warps number
         screen.blit(self.target_monster_image, self.target_monster_image_rect)
         pygame.draw.rect(screen, COLORS[self.target_monster_type],
                          (0, 100, WINDOW_WIDTH, WINDOW_HEIGHT-200), 4)
@@ -58,6 +58,7 @@ class Game:
         starts new round and spawn or create 
         """
         self.round_number += 1
+        self.player.warps += 1
         for i in range(self.round_number):
             self.monster_group.add(Monster(randint(
                 0, WINDOW_WIDTH - 64), randint(100, WINDOW_HEIGHT-164), self.monsters_images[0], 0))
@@ -76,13 +77,23 @@ class Game:
                 self.score += 1
                 collided_monster.remove(self.monster_group)
                 self.player.catch_sound.play()
+                # check if any monster remained in the monsters group
+                if self.monster_group:
+                    self.change_target()
+                else:
+                    self.start_new_round()
 
             else:
                 self.player.lives -= 1
                 self.player.die_sound.play()
                 self.player.reset()
 
+                # TODO Add Gameover functionality
+
     def change_target(self):
         # خط زیر لیستی از اسپرایت های باقی مانده را می دهد
         remained_sprites = self.monster_group.sprites()
         # TODO یک اسپرایت از میان اسپرایت های باقیمانده به عنوان تارگت جدید انتخاب کنید به صورت تصادفی
+        new_target = choice(remained_sprites)
+        self.target_monster_image = new_target.image
+        self.target_monster_type = new_target.type

@@ -24,6 +24,10 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                my_player.escape()
+
 
     display_surface.fill((0, 0, 0))
     player_group.draw(display_surface)

@@ -33,3 +33,9 @@ class Player(Sprite):
     def reset(self):
         self.rect.bottom = WINDOW_HEIGHT
         self.rect.centerx = WINDOW_WIDTH/2
+
+    def escape(self):
+        if self.warps > 0:
+            self.reset()
+            self.warp_sound.play()
+            self.warps -= 1
