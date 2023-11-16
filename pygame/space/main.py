@@ -18,10 +18,17 @@ while running:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 running = False
+            if event.key == pygame.K_SPACE:
+                my_player.fire()
+            
 
     screen.fill((0,0,0))
+    game.update()
     my_player.draw(screen)
+    my_player.move()
     enemy_group.update()
     enemy_group.draw(screen)
+    player_bullet_group.update()
+    player_bullet_group.draw(screen)
     pygame.display.update()
     clock.tick(FPS)
