@@ -10,4 +10,6 @@ TILE_SIZE = 32
 ROWS = SCREEN_HEIGHT // TILE_SIZE
 COLS = SCREEN_WIDTH // TILE_SIZE
 
-print(ROWS, COLS)
+DIRT_IMG = pygame.image.load("assets/dirt.png")
+GRASS_IMG = pygame.image.load("assets/grass.png")
+WATER_IMG = pygame.image.load("assets/water.png")
